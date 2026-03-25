@@ -300,8 +300,8 @@ body {
 <div id="settings-overlay" class="hidden">
     <div id="settings-panel">
         <div id="settings-header">
-            <span>&#9881; Settings</span>
-            <button id="close-settings">&#10005;</button>
+            <span>\u2699 Settings</span>
+            <button id="close-settings">\u2715</button>
         </div>
 
         <div id="preset-section">
@@ -347,8 +347,8 @@ body {
         </div>
 
         <div id="action-section">
-            <button class="action-btn" id="apply-btn">&#9654;  Apply</button>
-            <button class="action-btn" id="save-preset-btn">&#128190;  Save as Preset&#8230;</button>
+            <button class="action-btn" id="apply-btn">\u25b6  Apply</button>
+            <button class="action-btn" id="save-preset-btn">\ud83d\udcbe  Save as Preset\u2026</button>
         </div>
     </div>
 </div>
@@ -726,9 +726,16 @@ ws.onmessage = (event) => {
 updateSettingsFields();
 </script>
 <!-- ── Terminal panel ──────────────────────────────────────────────────── -->
-<link rel="stylesheet" href="http://10.42.0.1:8082/xterm.css">
-<script src="http://10.42.0.1:8082/xterm.js"></script>
-<script src="http://10.42.0.1:8082/addon-fit.js"></script>
+<!-- xterm.js loaded dynamically so the terminal works from any IP address -->
+<script>
+(function() {
+    var h = window.location.hostname;
+    var base = 'http://' + h + ':8082';
+    document.write('<link rel="stylesheet" href="' + base + '/xterm.css">');
+    document.write('<script src="' + base + '/xterm.js"><\/script>');
+    document.write('<script src="' + base + '/addon-fit.js"><\/script>');
+})();
+</script>
 <div id="term-panel">
     <div id="term-titlebar">
         <span>Terminal — raspi20</span>
